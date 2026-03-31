@@ -1,0 +1,667 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ClickMorph × Manav — Marketing Proposal</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;800&family=Outfit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --navy:       #0B1826;
+  --navy-mid:   #112236;
+  --teal:       #0E8FAD;
+  --teal-dim:   #0A7A95;
+  --cyan:       #22D3EE;
+  --white:      #FFFFFF;
+  --snow:       #F7FAFB;
+  --slate:      #64748B;
+  --mist:       #94A3B8;
+  --fog:        #CBD5E1;
+  --green:      #10B981;
+  --amber:      #F59E0B;
+  --border-d:   rgba(255,255,255,0.07);
+  --border-l:   rgba(0,0,0,0.08);
+}
+
+html { scroll-behavior: smooth; font-size: 16px; }
+
+body {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 400;
+  background: var(--navy);
+  color: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ─── NAV ─── */
+#nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 200;
+  height: 60px;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 0 52px;
+  background: rgba(11,24,38,0.82);
+  backdrop-filter: blur(20px) saturate(150%);
+  border-bottom: 1px solid var(--border-d);
+}
+.nav-brand {
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700; font-size: 13px;
+  letter-spacing: 4px; color: var(--cyan);
+  text-transform: uppercase;
+}
+.nav-pills { display: flex; gap: 6px; }
+.pill {
+  width: 24px; height: 4px; border-radius: 2px;
+  background: var(--border-d); cursor: pointer;
+  border: none; transition: background 0.25s, width 0.25s;
+}
+.pill.active { background: var(--cyan); width: 36px; }
+
+/* ─── SECTION BASE ─── */
+.section {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 100px 80px 80px;
+  position: relative; overflow: hidden;
+}
+.section-light { background: var(--snow); color: var(--navy); }
+
+/* ─── TYPE SYSTEM ─── */
+.eyebrow {
+  font-size: 10.5px; font-weight: 600;
+  letter-spacing: 4px; text-transform: uppercase;
+  color: var(--cyan); margin-bottom: 14px;
+  display: flex; align-items: center; gap: 12px;
+}
+.eyebrow::before {
+  content: ''; display: inline-block;
+  width: 28px; height: 1.5px;
+  background: var(--cyan); flex-shrink: 0;
+}
+.eyebrow-dark { color: var(--teal); }
+.eyebrow-dark::before { background: var(--teal); }
+
+.display {
+  font-family: 'Playfair Display', serif;
+  font-weight: 800; line-height: 1.12; letter-spacing: -0.02em;
+}
+.display-xl { font-size: clamp(40px, 5vw, 62px); }
+.display-lg { font-size: clamp(28px, 3.5vw, 44px); }
+
+.lead { font-size: 15px; font-weight: 300; line-height: 1.8; color: var(--mist); }
+.lead-dark { color: var(--slate); }
+
+/* ─── GRIDS ─── */
+.g3 { display: grid; grid-template-columns: repeat(3,1fr); gap: 24px; margin-top: 48px; }
+.g2 { display: grid; grid-template-columns: repeat(2,1fr); gap: 24px; margin-top: 44px; }
+.g4 { display: grid; grid-template-columns: repeat(4,1fr); gap: 18px; margin-top: 48px; }
+
+/* ─── CARD LIGHT ─── */
+.card-l {
+  background: #fff; border-radius: 18px; padding: 34px 28px;
+  border: 1px solid var(--border-l);
+  box-shadow: 0 2px 16px rgba(0,0,0,0.06);
+  position: relative; overflow: hidden;
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s;
+}
+.card-l:hover { transform: translateY(-5px); box-shadow: 0 16px 48px rgba(0,0,0,0.10); }
+.card-l::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--teal), var(--cyan));
+}
+.card-l-icon { width: 44px; height: 44px; border-radius: 12px; background: rgba(14,143,173,0.1); display: flex; align-items: center; justify-content: center; font-size: 20px; margin-bottom: 20px; }
+.card-l-title { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 10px; line-height: 1.35; }
+.card-l-body { font-size: 13.5px; color: var(--slate); line-height: 1.72; }
+
+/* ─── STAT DARK ─── */
+.stat-d {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(14,143,173,0.2);
+  border-radius: 18px; padding: 28px 22px 24px;
+  text-align: center; position: relative; overflow: hidden;
+  transition: transform 0.35s cubic-bezier(.22,1,.36,1);
+}
+.stat-d:hover { transform: translateY(-5px); }
+.stat-d::after { content: ''; position: absolute; bottom: 0; left: 0; right: 0; height: 2px; background: linear-gradient(90deg, var(--teal), var(--cyan)); }
+.stat-num { font-family: 'Playfair Display', serif; font-size: 44px; font-weight: 800; color: var(--cyan); line-height: 1; margin-bottom: 10px; letter-spacing: -0.02em; }
+.stat-lbl { font-size: 12px; font-weight: 600; letter-spacing: 0.5px; color: var(--white); margin-bottom: 8px; }
+.stat-sub { font-size: 11.5px; color: var(--mist); line-height: 1.6; }
+
+/* ─── TAG ─── */
+.tag { display: inline-block; padding: 4px 14px; border-radius: 20px; font-size: 9.5px; font-weight: 700; letter-spacing: 2.5px; text-transform: uppercase; }
+.tag-teal { background: rgba(14,143,173,0.12); color: var(--teal); border: 1px solid rgba(14,143,173,0.25); }
+.tag-cyan { background: rgba(34,211,238,0.1); color: var(--cyan); border: 1px solid rgba(34,211,238,0.2); }
+
+/* ─── DIVIDER ─── */
+.divider { height: 1px; background: linear-gradient(90deg, transparent, rgba(14,143,173,0.25), transparent); }
+
+/* ─── COVER ─── */
+#s1 { background: var(--navy); }
+.cover-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 72px; align-items: center; }
+.cover-rule { width: 48px; height: 2px; background: linear-gradient(90deg, var(--teal), var(--cyan)); margin: 16px 0 22px; }
+.cover-headline em { font-style: normal; color: var(--cyan); }
+.cover-meta { display: flex; align-items: center; gap: 20px; margin-top: 36px; flex-wrap: wrap; }
+.cover-meta-item { font-size: 12px; font-weight: 500; color: var(--mist); display: flex; align-items: center; gap: 8px; }
+.cover-meta-dot { width: 4px; height: 4px; border-radius: 50%; background: var(--teal); }
+
+.info-card {
+  background: rgba(255,255,255,0.04); border: 1px solid rgba(14,143,173,0.2);
+  border-radius: 22px; padding: 0; overflow: hidden;
+  backdrop-filter: blur(8px);
+}
+.ic-row {
+  display: flex; justify-content: space-between; align-items: center;
+  padding: 20px 28px; border-bottom: 1px solid var(--border-d);
+}
+.ic-row:last-child { border-bottom: none; }
+.ic-label { font-size: 10px; font-weight: 600; letter-spacing: 2px; color: var(--mist); text-transform: uppercase; margin-bottom: 5px; }
+.ic-val { font-size: 15px; font-weight: 500; color: var(--white); }
+.ic-tag { padding: 5px 14px; border-radius: 20px; font-size: 11px; font-weight: 600; white-space: nowrap; }
+
+.glow-blob {
+  position: absolute; border-radius: 50%; pointer-events: none; z-index: 0;
+}
+
+/* ─── INSIGHT STRIP ─── */
+.insight-strip {
+  margin-top: 30px; background: rgba(14,143,173,0.08); border: 1px solid rgba(14,143,173,0.2);
+  border-radius: 14px; padding: 18px 26px;
+  display: flex; align-items: flex-start; gap: 16px;
+  font-size: 13.5px; color: var(--mist); font-style: italic;
+}
+.insight-strip strong { color: var(--white); font-style: normal; }
+
+/* ─── PILLAR ─── */
+.pillar { background: #fff; border-radius: 20px; overflow: hidden; border: 1px solid var(--border-l); box-shadow: 0 2px 20px rgba(0,0,0,0.07); transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s; }
+.pillar:hover { transform: translateY(-6px); box-shadow: 0 20px 56px rgba(0,0,0,0.11); }
+.pillar-head { background: var(--navy); padding: 26px 28px; display: flex; align-items: center; gap: 14px; }
+.pillar-badge { width: 36px; height: 36px; border-radius: 50%; background: rgba(14,143,173,0.2); border: 1.5px solid var(--teal); display: flex; align-items: center; justify-content: center; font-size: 12px; font-weight: 700; color: var(--cyan); flex-shrink: 0; }
+.pillar-hname { font-size: 15px; font-weight: 600; color: var(--white); line-height: 1.3; flex: 1; }
+.pillar-emoji { font-size: 20px; opacity: 0.7; }
+.pillar-body-inner { padding: 26px 28px; }
+.pillar-chk { display: flex; align-items: flex-start; gap: 10px; font-size: 13.5px; color: #374151; margin-bottom: 12px; line-height: 1.45; }
+.pillar-chk-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--teal); flex-shrink: 0; margin-top: 6px; }
+.pillar-foot { padding: 0 28px 26px; }
+
+/* ─── TIMELINE ─── */
+#s5 { background: var(--navy-mid); }
+.tl-wrap { margin-top: 52px; position: relative; }
+.tl-spine { position: absolute; top: 30px; left: calc(12.5% + 12px); right: calc(12.5% + 12px); height: 1px; background: linear-gradient(90deg, var(--teal), rgba(14,143,173,0.15)); z-index: 0; }
+.tl-grid { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; position: relative; z-index: 1; }
+.tl-col { display: flex; flex-direction: column; align-items: center; }
+.tl-dot-wrap { display: flex; justify-content: center; margin-bottom: 22px; }
+.tl-dot { width: 20px; height: 20px; border-radius: 50%; border: 2px solid; display: flex; align-items: center; justify-content: center; }
+.tl-dot::after { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+.tl-card { background: rgba(255,255,255,0.04); border-radius: 16px; padding: 20px 18px; width: 100%; text-align: center; border: 1px solid rgba(255,255,255,0.07); transition: transform 0.35s cubic-bezier(.22,1,.36,1), background 0.3s; }
+.tl-card:hover { transform: translateY(-4px); background: rgba(255,255,255,0.06); }
+.tl-week { font-size: 9px; font-weight: 700; letter-spacing: 3px; text-transform: uppercase; margin-bottom: 6px; }
+.tl-title { font-family: 'Playfair Display', serif; font-size: 17px; font-weight: 700; color: var(--white); margin-bottom: 14px; }
+.tl-items { font-size: 12px; color: var(--mist); line-height: 1.85; text-align: left; }
+.tl-item-row { display: flex; gap: 6px; margin-bottom: 2px; }
+.tl-arrow { color: var(--teal); font-size: 10px; margin-top: 3px; flex-shrink: 0; }
+
+.p2-strip { margin-top: 32px; background: rgba(245,158,11,0.07); border: 1px solid rgba(245,158,11,0.22); border-radius: 14px; padding: 16px 26px; display: flex; align-items: center; gap: 16px; font-size: 13px; color: rgba(245,158,11,0.8); font-style: italic; }
+.p2-strip strong { color: var(--amber); font-style: normal; }
+
+/* ─── PRICING ─── */
+#s6 { background: var(--snow); }
+.price-wrap { display: grid; grid-template-columns: 1fr 1.1fr 1fr; gap: 20px; margin-top: 52px; align-items: start; }
+.pc { border-radius: 22px; position: relative; transition: transform 0.35s cubic-bezier(.22,1,.36,1); }
+.pc:hover { transform: translateY(-6px); }
+.pc-inner { border-radius: 22px; overflow: hidden; border: 1.5px solid var(--border-l); background: #fff; box-shadow: 0 2px 20px rgba(0,0,0,0.06); }
+.pc.feat .pc-inner { border-color: var(--teal); background: var(--navy); box-shadow: 0 12px 56px rgba(14,143,173,0.22); }
+.pc-badge { position: absolute; top: -13px; left: 50%; transform: translateX(-50%); background: linear-gradient(90deg, var(--teal), var(--cyan)); color: var(--white); font-size: 9px; font-weight: 700; letter-spacing: 2px; padding: 5px 18px; border-radius: 20px; white-space: nowrap; box-shadow: 0 4px 14px rgba(14,143,173,0.35); }
+.pc-head { padding: 28px 28px 20px; border-bottom: 1px solid rgba(0,0,0,0.07); }
+.pc.feat .pc-head { border-bottom-color: var(--border-d); }
+.pc-tier { font-size: 9.5px; font-weight: 700; letter-spacing: 3px; color: var(--teal); text-transform: uppercase; margin-bottom: 14px; }
+.pc-price { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 800; color: var(--navy); line-height: 1; letter-spacing: -0.02em; }
+.pc.feat .pc-price { color: var(--white); }
+.pc-per { font-size: 13px; font-weight: 400; color: var(--slate); }
+.pc.feat .pc-per { color: var(--mist); }
+.pc-body { padding: 20px 28px 26px; }
+.pc-row { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #374151; margin-bottom: 11px; line-height: 1.45; }
+.pc.feat .pc-row { color: rgba(255,255,255,0.85); }
+.pc-ck { color: var(--teal); font-size: 13px; flex-shrink: 0; margin-top: 1px; }
+.pc-row-off { opacity: 0.3; }
+
+.price-note-bar { margin-top: 26px; background: rgba(14,143,173,0.06); border: 1px solid rgba(14,143,173,0.15); border-radius: 12px; padding: 14px 20px; font-size: 12px; color: var(--slate); text-align: center; line-height: 1.6; }
+
+/* ─── CONTRACT ─── */
+#s7 { background: var(--navy); }
+.contract-split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; margin-top: 52px; }
+.bk-table { border: 1px solid var(--border-d); border-radius: 20px; overflow: hidden; }
+.bk-row { display: flex; justify-content: space-between; align-items: flex-start; padding: 20px 26px; border-bottom: 1px solid var(--border-d); }
+.bk-row:last-of-type { border-bottom: none; }
+.bk-lbl { font-size: 13.5px; color: var(--mist); line-height: 1.4; }
+.bk-r { text-align: right; }
+.bk-amount { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; color: var(--cyan); letter-spacing: -0.01em; }
+.bk-note { font-size: 10.5px; color: rgba(148,163,184,0.5); font-style: italic; margin-top: 2px; }
+.bk-total { background: linear-gradient(90deg, var(--teal-dim), var(--teal)); padding: 20px 26px; display: flex; justify-content: space-between; align-items: center; }
+.bk-total-lbl { font-size: 14px; font-weight: 600; color: var(--white); }
+.bk-total-amount { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--white); letter-spacing: -0.02em; }
+
+.upsell { background: rgba(245,158,11,0.06); border: 1px solid rgba(245,158,11,0.2); border-radius: 20px; overflow: hidden; }
+.upsell-head { padding: 13px 26px; background: rgba(245,158,11,0.1); border-bottom: 1px solid rgba(245,158,11,0.15); font-size: 9.5px; font-weight: 700; letter-spacing: 3px; color: var(--amber); text-transform: uppercase; }
+.upsell-bd { padding: 24px 26px; }
+.upsell-name { font-family: 'Playfair Display', serif; font-size: 21px; font-weight: 700; color: var(--white); line-height: 1.25; margin-bottom: 18px; }
+.upsell-it { font-size: 13px; color: rgba(212,180,131,0.8); margin-bottom: 9px; line-height: 1.55; display: flex; gap: 8px; align-items: flex-start; }
+.upsell-it::before { content: '→'; color: var(--amber); flex-shrink: 0; }
+.upsell-price-box { margin: 20px 0; background: rgba(245,158,11,0.12); border: 1px solid rgba(245,158,11,0.25); border-radius: 12px; padding: 14px; text-align: center; font-family: 'Playfair Display', serif; font-size: 20px; font-weight: 800; color: var(--white); }
+.upsell-ttl { background: rgba(16,185,129,0.08); border: 1px solid rgba(16,185,129,0.2); border-radius: 12px; padding: 14px 18px; }
+.upsell-ttl-lbl { font-size: 11px; color: var(--mist); margin-bottom: 4px; }
+.upsell-ttl-num { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 800; color: var(--green); letter-spacing: -0.02em; }
+
+/* ─── WHY ─── */
+#s8 { background: var(--snow); }
+.why-card { background: #fff; border: 1px solid var(--border-l); border-radius: 18px; padding: 28px 24px; display: flex; gap: 18px; align-items: flex-start; box-shadow: 0 2px 14px rgba(0,0,0,0.05); border-left: 3px solid var(--teal); transition: transform 0.35s cubic-bezier(.22,1,.36,1), box-shadow 0.35s; }
+.why-card:hover { transform: translateY(-4px); box-shadow: 0 14px 40px rgba(0,0,0,0.09); }
+.why-em { font-size: 24px; flex-shrink: 0; margin-top: 2px; }
+.why-title { font-size: 15px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+.why-body { font-size: 13.5px; color: var(--slate); line-height: 1.7; }
+
+/* ─── CLOSE ─── */
+#s9 { background: var(--navy); text-align: center; }
+.close-em { font-style: normal; color: var(--cyan); }
+.steps-wrap { display: grid; grid-template-columns: repeat(4,1fr); gap: 16px; position: relative; margin-top: 60px; margin-bottom: 52px; }
+.steps-spine { position: absolute; top: 32px; left: 12%; right: 12%; height: 1px; background: linear-gradient(90deg, transparent, rgba(14,143,173,0.4), transparent); }
+.step-col { display: flex; flex-direction: column; align-items: center; gap: 16px; position: relative; z-index: 1; }
+.step-ring { width: 64px; height: 64px; border-radius: 50%; background: rgba(14,143,173,0.1); border: 1.5px solid var(--teal); display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; color: var(--cyan); box-shadow: 0 0 0 8px rgba(14,143,173,0.06); }
+.step-title { font-size: 14px; font-weight: 600; color: var(--white); line-height: 1.35; }
+.step-sub { font-size: 12px; font-weight: 300; color: var(--mist); line-height: 1.65; }
+.cta-final { display: inline-block; background: linear-gradient(135deg, var(--teal-dim), var(--teal)); border-radius: 16px; padding: 24px 52px; font-size: 15px; font-weight: 500; color: var(--white); font-style: italic; box-shadow: 0 10px 40px rgba(14,143,173,0.28); letter-spacing: 0.2px; }
+
+/* ─── FOOTERS ─── */
+.page-foot { position: absolute; bottom: 26px; left: 0; right: 0; text-align: center; font-size: 10px; letter-spacing: 2px; color: rgba(148,163,184,0.35); }
+.foot-r { position: absolute; bottom: 26px; right: 52px; font-size: 10px; letter-spacing: 1.5px; color: rgba(148,163,184,0.3); }
+.foot-r-dark { color: rgba(14,143,173,0.35); }
+
+/* ─── SCROLL HINT ─── */
+#scroll-hint { position: fixed; bottom: 32px; left: 50%; transform: translateX(-50%); display: flex; flex-direction: column; align-items: center; gap: 5px; font-size: 8px; letter-spacing: 3px; color: rgba(148,163,184,0.3); animation: nudge 2.5s ease-in-out infinite; pointer-events: none; transition: opacity 0.5s; }
+@keyframes nudge { 0%,100% { transform: translateX(-50%) translateY(0); } 55% { transform: translateX(-50%) translateY(7px); } }
+
+/* ─── REVEAL ─── */
+.reveal { opacity: 0; transform: translateY(20px); transition: opacity 0.65s cubic-bezier(.22,1,.36,1), transform 0.65s cubic-bezier(.22,1,.36,1); }
+.reveal.in { opacity: 1; transform: none; }
+
+/* ─── DECORATIVE GLOWS ─── */
+.glow-blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
+.section > *:not(.glow-blob):not(.page-foot):not(.foot-r) { position: relative; z-index: 1; }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="nav">
+  <div class="nav-brand">ClickMorph</div>
+  <div class="nav-pills">
+    <button class="pill active" data-s="s1"></button>
+    <button class="pill" data-s="s2"></button>
+    <button class="pill" data-s="s3"></button>
+    <button class="pill" data-s="s4"></button>
+    <button class="pill" data-s="s5"></button>
+    <button class="pill" data-s="s6"></button>
+    <button class="pill" data-s="s7"></button>
+    <button class="pill" data-s="s8"></button>
+    <button class="pill" data-s="s9"></button>
+  </div>
+</nav>
+
+<!-- S1 COVER -->
+<section class="section" id="s1">
+  <div class="glow-blob" style="width:500px;height:500px;top:-120px;right:-120px;background:radial-gradient(circle,rgba(14,143,173,0.12) 0%,transparent 65%);"></div>
+  <div class="glow-blob" style="width:280px;height:280px;bottom:-40px;left:-60px;background:radial-gradient(circle,rgba(34,211,238,0.07) 0%,transparent 65%);"></div>
+
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;">
+    <div>
+      <div class="eyebrow reveal">ClickMorph</div>
+      <div class="cover-rule reveal"></div>
+      <h1 class="display display-xl reveal" style="margin-bottom:18px;">Your Brand.<br>Your Growth.<br><em class="cover-headline">Our Mission.</em></h1>
+      <p class="lead reveal">A full-stack digital marketing proposal prepared exclusively for <strong style="color:var(--white);font-weight:600;">Manav</strong></p>
+      <div class="cover-meta reveal">
+        <div class="cover-meta-item"><div class="cover-meta-dot"></div> March 2025</div>
+        <div class="cover-meta-item"><div class="cover-meta-dot"></div> Confidential</div>
+        <div class="cover-meta-item"><div class="cover-meta-dot"></div> clickmorph.in</div>
+      </div>
+    </div>
+    <div class="reveal">
+      <div class="info-card">
+        <div class="ic-row">
+          <div><div class="ic-label">Client</div><div class="ic-val">Manav</div></div>
+          <div class="ic-tag" style="background:rgba(14,143,173,0.15);border:1px solid rgba(14,143,173,0.3);color:var(--teal);">Warm Lead</div>
+        </div>
+        <div class="ic-row">
+          <div><div class="ic-label">Services</div><div class="ic-val">Social Media + Ads + Setup</div></div>
+        </div>
+        <div class="ic-row">
+          <div><div class="ic-label">Monthly Retainer</div><div class="ic-val">₹50,000 / month</div></div>
+          <div class="ic-tag" style="background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.22);color:var(--cyan);">Growth Plan</div>
+        </div>
+        <div class="ic-row">
+          <div><div class="ic-label">Contract Duration</div><div class="ic-val">6 Months</div></div>
+          <div class="ic-tag" style="background:rgba(16,185,129,0.08);border:1px solid rgba(16,185,129,0.25);color:var(--green);">April Launch</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="page-foot">Prepared by ClickMorph &nbsp;·&nbsp; March 2025 &nbsp;·&nbsp; Strictly Confidential</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- S2 UNDERSTAND -->
+<section class="section section-light" id="s2">
+  <div class="eyebrow eyebrow-dark reveal">We Understand Your World</div>
+  <h2 class="display display-lg reveal">Where Manav Stands Today</h2>
+  <p class="lead lead-dark reveal" style="margin-top:8px;">Your context shapes our entire strategy.</p>
+  <div class="g3">
+    <div class="card-l reveal">
+      <div class="card-l-icon">🚀</div>
+      <div class="card-l-title">Fresh Rebrand</div>
+      <div class="card-l-body">You're stepping into a new identity. First impressions in the digital space need to be bold, clear, and memorable — and we build that from day one.</div>
+    </div>
+    <div class="card-l reveal">
+      <div class="card-l-icon">👥</div>
+      <div class="card-l-title">Dual Audience</div>
+      <div class="card-l-body">Class 11–12 students plus MBBS/MD aspirants — a unique pipeline advantage that competitors simply cannot replicate.</div>
+    </div>
+    <div class="card-l reveal">
+      <div class="card-l-icon">📅</div>
+      <div class="card-l-title">Admission Season Ahead</div>
+      <div class="card-l-body">3 months to build brand awareness before the counselling rush begins. The window to act is right now.</div>
+    </div>
+  </div>
+  <div class="foot-r foot-r-dark">clickmorph.in</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- S3 OPPORTUNITY -->
+<section class="section" id="s3" style="background:var(--navy-mid);">
+  <div class="eyebrow reveal">The Opportunity</div>
+  <h2 class="display display-lg reveal">The Market Is Huge —<br>And Mostly Unowned</h2>
+  <div class="g4">
+    <div class="stat-d reveal"><div class="stat-num">776+</div><div class="stat-lbl">Medical Colleges</div><div class="stat-sub">Complex landscape = consistently high counselling demand</div></div>
+    <div class="stat-d reveal"><div class="stat-num">₹2L+</div><div class="stat-lbl">Revenue Per Student</div><div class="stat-sub">Per enrolled MBBS student for a consultancy like Manav</div></div>
+    <div class="stat-d reveal"><div class="stat-num">18M+</div><div class="stat-lbl">NEET Registrations</div><div class="stat-sub">Every one of them needs expert guidance to navigate</div></div>
+    <div class="stat-d reveal"><div class="stat-num">Low</div><div class="stat-lbl">Digital Competition</div><div class="stat-sub">Most local agencies have zero meaningful online presence</div></div>
+  </div>
+  <div class="insight-strip reveal">
+    <span style="font-size:20px;flex-shrink:0;">💡</span>
+    <div><strong>One enrolled student covers your entire month's marketing spend.</strong> Every student after that is pure return. The math is undeniable.</div>
+  </div>
+  <div class="foot-r">clickmorph.in</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- S4 APPROACH -->
+<section class="section section-light" id="s4">
+  <div class="eyebrow eyebrow-dark reveal">Our Approach</div>
+  <h2 class="display display-lg reveal">Three Pillars.<br>One Unified Launch.</h2>
+  <p class="lead lead-dark reveal" style="margin-top:8px;">Each service is designed to work together — not in isolation.</p>
+  <div class="g3">
+    <div class="pillar reveal">
+      <div class="pillar-head"><div class="pillar-badge">01</div><div class="pillar-hname">Meta Business Suite Setup</div><div class="pillar-emoji">⚙️</div></div>
+      <div class="pillar-body-inner">
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>Facebook + Instagram fully linked</div>
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>Ad Account + Meta Pixel installed</div>
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>WhatsApp Business integrated</div>
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>Profiles fully optimised</div>
+      </div>
+      <div class="pillar-foot"><span class="tag tag-teal">One-Time Setup</span></div>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-head"><div class="pillar-badge">02</div><div class="pillar-hname">Social Media Management</div><div class="pillar-emoji">📱</div></div>
+      <div class="pillar-body-inner">
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>4–5 posts per week on Instagram</div>
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>3 posts per week on Facebook</div>
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>Daily Stories + Reels</div>
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>Full content calendar managed</div>
+      </div>
+      <div class="pillar-foot"><span class="tag tag-cyan">Monthly</span></div>
+    </div>
+    <div class="pillar reveal">
+      <div class="pillar-head"><div class="pillar-badge">03</div><div class="pillar-hname">Meta Ads — Paid Campaign</div><div class="pillar-emoji">📣</div></div>
+      <div class="pillar-body-inner">
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>Month 1–2: Brand awareness</div>
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>Month 3: Full lead generation</div>
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>Student + Parent targeting</div>
+        <div class="pillar-chk"><div class="pillar-chk-dot"></div>Ad creatives fully included</div>
+      </div>
+      <div class="pillar-foot"><span class="tag tag-cyan">Monthly</span></div>
+    </div>
+  </div>
+  <div class="foot-r foot-r-dark">clickmorph.in</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- S5 TIMELINE -->
+<section class="section" id="s5">
+  <div class="eyebrow reveal">Rollout Timeline</div>
+  <h2 class="display display-lg reveal">From Zero to Full Pipeline<br>in 90 Days</h2>
+  <div class="tl-wrap">
+    <div class="tl-spine"></div>
+    <div class="tl-grid">
+      <div class="tl-col reveal">
+        <div class="tl-dot-wrap"><div class="tl-dot" style="color:var(--teal);border-color:var(--teal);"></div></div>
+        <div class="tl-card" style="border-color:rgba(14,143,173,0.3);">
+          <div class="tl-week" style="color:var(--teal);">Week 1</div>
+          <div class="tl-title">Foundation</div>
+          <div class="tl-items">
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Meta Suite setup</div>
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Profiles optimised</div>
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Brand tone defined</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-col reveal">
+        <div class="tl-dot-wrap"><div class="tl-dot" style="color:var(--cyan);border-color:var(--cyan);"></div></div>
+        <div class="tl-card" style="border-color:rgba(34,211,238,0.25);">
+          <div class="tl-week" style="color:var(--cyan);">Week 2</div>
+          <div class="tl-title">Go Live</div>
+          <div class="tl-items">
+            <div class="tl-item-row"><span class="tl-arrow">›</span>First posts live</div>
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Stories begin</div>
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Rebrand announced</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-col reveal">
+        <div class="tl-dot-wrap"><div class="tl-dot" style="color:#6BB8CC;border-color:#6BB8CC;"></div></div>
+        <div class="tl-card">
+          <div class="tl-week" style="color:#6BB8CC;">Month 1–2</div>
+          <div class="tl-title">Awareness</div>
+          <div class="tl-items">
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Ads running (awareness)</div>
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Content calendar live</div>
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Audience growing</div>
+          </div>
+        </div>
+      </div>
+      <div class="tl-col reveal">
+        <div class="tl-dot-wrap"><div class="tl-dot" style="color:var(--green);border-color:var(--green);"></div></div>
+        <div class="tl-card" style="border-color:rgba(16,185,129,0.3);">
+          <div class="tl-week" style="color:var(--green);">Month 3</div>
+          <div class="tl-title">Lead Gen</div>
+          <div class="tl-items">
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Ads → lead gen mode</div>
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Admission season starts</div>
+            <div class="tl-item-row"><span class="tl-arrow">›</span>Pipeline filling</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="p2-strip reveal">
+    <span style="font-size:18px;flex-shrink:0;">⚡</span>
+    <div><strong>Phase 2 — Month 3 onwards:</strong> WhatsApp Outreach Automation via ManyChat/Convocore — convert warm leads into enrolled students.</div>
+  </div>
+  <div class="foot-r">clickmorph.in</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- S6 PRICING -->
+<section class="section section-light" id="s6">
+  <div class="eyebrow eyebrow-dark reveal">Your Investment</div>
+  <h2 class="display display-lg reveal">Simple, Transparent,<br>No Surprises.</h2>
+  <p class="lead lead-dark reveal" style="margin-top:8px;">One clear package. Designed to grow with you.</p>
+  <div class="price-wrap">
+    <div class="pc reveal">
+      <div class="pc-inner">
+        <div class="pc-head"><div class="pc-tier">Starter</div><div><span class="pc-price">₹25,000</span><span class="pc-per"> /month</span></div></div>
+        <div class="pc-body">
+          <div class="pc-row"><span class="pc-ck">✓</span> Meta Business Suite Setup</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> Social Media Management</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> Basic content calendar</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> Facebook + Instagram</div>
+          <div style="height:1px;background:rgba(0,0,0,0.07);margin:12px 0;"></div>
+          <div class="pc-row pc-row-off"><span style="color:#bbb;font-size:11px;">✗</span>&nbsp; Meta Ads</div>
+          <div class="pc-row pc-row-off"><span style="color:#bbb;font-size:11px;">✗</span>&nbsp; Monthly Reports</div>
+        </div>
+      </div>
+    </div>
+    <div class="pc feat reveal">
+      <div class="pc-badge">★ &nbsp;RECOMMENDED</div>
+      <div class="pc-inner">
+        <div class="pc-head"><div class="pc-tier">Growth</div><div><span class="pc-price">₹50,000</span><span class="pc-per"> /month</span></div></div>
+        <div class="pc-body">
+          <div class="pc-row"><span class="pc-ck">✓</span> Everything in Starter</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> Meta Ads — Awareness + Leads</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> Ad creative production</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> Monthly performance report</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> Strategy & consultation</div>
+          <div style="height:1px;background:rgba(255,255,255,0.07);margin:12px 0;"></div>
+          <div class="pc-row pc-row-off"><span style="color:#444;font-size:11px;">✗</span>&nbsp; <span style="color:rgba(148,163,184,0.4)">Reels / Video Production</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="pc reveal">
+      <div class="pc-inner">
+        <div class="pc-head"><div class="pc-tier">Premium</div><div><span class="pc-price">₹75,000</span><span class="pc-per"> /month</span></div></div>
+        <div class="pc-body">
+          <div class="pc-row"><span class="pc-ck">✓</span> Everything in Growth</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> Reels & Video content</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> WhatsApp Automation (Phase 2)</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> Priority support</div>
+          <div class="pc-row"><span class="pc-ck">✓</span> Bi-weekly strategy calls</div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="price-note-bar reveal">* One-time Meta Business Suite setup fee: <strong>₹15,000</strong> &nbsp;·&nbsp; Ad spend budget paid directly to Meta (recommended ₹15,000–₹25,000 / month)</div>
+  <div class="foot-r foot-r-dark">clickmorph.in</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- S7 CONTRACT -->
+<section class="section" id="s7">
+  <div class="eyebrow reveal">What You Get</div>
+  <h2 class="display display-lg reveal">The Full 6-Month<br>Growth Package</h2>
+  <div class="contract-split">
+    <div class="reveal">
+      <div class="bk-table">
+        <div class="bk-row"><div class="bk-lbl">Meta Business Suite Setup</div><div class="bk-r"><div class="bk-amount">₹15,000</div><div class="bk-note">one-time</div></div></div>
+        <div class="bk-row"><div class="bk-lbl">Social Media Management</div><div class="bk-r"><div class="bk-amount">₹25,000</div><div class="bk-note">× 6 months</div></div></div>
+        <div class="bk-row"><div class="bk-lbl">Meta Ads Management</div><div class="bk-r"><div class="bk-amount">₹22,000</div><div class="bk-note">× 6 months</div></div></div>
+        <div class="bk-row"><div class="bk-lbl">Strategy, Reporting & Consultation</div><div class="bk-r"><div class="bk-amount">₹3,000</div><div class="bk-note">× 6 months</div></div></div>
+        <div class="bk-total"><div class="bk-total-lbl">6-Month Contract Total</div><div class="bk-total-amount">₹3,15,000</div></div>
+      </div>
+    </div>
+    <div class="upsell reveal">
+      <div class="upsell-head">⚡ &nbsp;Phase 2 Add-On</div>
+      <div class="upsell-bd">
+        <div class="upsell-name">WhatsApp Outreach<br>Automation</div>
+        <div class="upsell-it">ManyChat / Convocore setup</div>
+        <div class="upsell-it">Broadcast to your existing list</div>
+        <div class="upsell-it">Automated lead nurturing sequences</div>
+        <div class="upsell-it">Available from Month 3 onwards</div>
+        <div class="upsell-price-box">₹15,000 / month</div>
+        <div class="upsell-ttl"><div class="upsell-ttl-lbl">💰 Total potential value — Phase 1 + 2</div><div class="upsell-ttl-num">₹3,60,000</div></div>
+      </div>
+    </div>
+  </div>
+  <div class="foot-r">clickmorph.in</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- S8 WHY -->
+<section class="section section-light" id="s8">
+  <div class="eyebrow eyebrow-dark reveal">Why ClickMorph</div>
+  <h2 class="display display-lg reveal">What Sets Us Apart</h2>
+  <p class="lead lead-dark reveal" style="margin-top:8px;">Experience, strategy, and timing — all in your favour.</p>
+  <div class="g2">
+    <div class="why-card reveal"><div class="why-em">📈</div><div><div class="why-title">Results-First Thinking</div><div class="why-body">Every decision is tied to your business outcome — not just impressions or reach. We measure what actually moves your bottom line.</div></div></div>
+    <div class="why-card reveal"><div class="why-em">⭐</div><div><div class="why-title">2+ Years, Real Clients</div><div class="why-body">We've worked across multiple active clients. This isn't our learning ground — it's our proven track record that speaks for itself.</div></div></div>
+    <div class="why-card reveal"><div class="why-em">🚀</div><div><div class="why-title">Built for Your Timeline</div><div class="why-body">April launch? We've scoped the entire rollout to hit that deadline without cutting corners. Urgency is built into how we work.</div></div></div>
+    <div class="why-card reveal"><div class="why-em">💬</div><div><div class="why-title">Full Ecosystem Thinking</div><div class="why-body">From awareness ads to WhatsApp conversion — we design for the whole funnel, not just one touchpoint. Every piece feeds the next.</div></div></div>
+  </div>
+  <div class="foot-r foot-r-dark">clickmorph.in</div>
+</section>
+
+<div class="divider"></div>
+
+<!-- S9 CLOSE -->
+<section class="section" id="s9">
+  <div class="eyebrow reveal" style="justify-content:center;">Next Steps</div>
+  <h2 class="display display-xl reveal" style="text-align:center;margin-bottom:0;">Ready to Launch?<br><span class="close-em">Let's Make It Official.</span></h2>
+  <div class="steps-wrap reveal">
+    <div class="steps-spine"></div>
+    <div class="step-col"><div class="step-ring">01</div><div class="step-title">Sign the Agreement</div><div class="step-sub">6-month contract, clear scope, no hidden clauses</div></div>
+    <div class="step-col"><div class="step-ring">02</div><div class="step-title">Pay Advance</div><div class="step-sub">Setup fee (₹15,000) + first month retainer (₹50,000)</div></div>
+    <div class="step-col"><div class="step-ring">03</div><div class="step-title">Kickoff Call</div><div class="step-sub">Align on brand tone, content direction & ad targeting</div></div>
+    <div class="step-col"><div class="step-ring">04</div><div class="step-title">Go Live by April</div><div class="step-sub">Your brand — active, visible, and growing</div></div>
+  </div>
+  <div style="text-align:center;">
+    <div class="cta-final reveal">April is close. The sooner we start, the stronger your launch. 🚀</div>
+  </div>
+  <div class="page-foot">ClickMorph &nbsp;·&nbsp; clickmorph.in &nbsp;·&nbsp; Confidential</div>
+</section>
+
+<div id="scroll-hint">
+  <svg width="14" height="20" viewBox="0 0 14 20" fill="none"><rect x="1" y="1" width="12" height="18" rx="6" stroke="rgba(148,163,184,0.3)" stroke-width="1.5"/><circle cx="7" cy="6" r="2" fill="rgba(148,163,184,0.3)"/></svg>
+  <span>SCROLL</span>
+</div>
+
+<script>
+const sections = document.querySelectorAll('.section');
+const pills = document.querySelectorAll('.pill');
+const hint = document.getElementById('scroll-hint');
+
+pills.forEach(p => p.addEventListener('click', () => document.getElementById(p.dataset.s)?.scrollIntoView({ behavior:'smooth' })));
+
+const sectionObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const i = Array.from(sections).indexOf(entry.target);
+      pills.forEach(p => p.classList.remove('active'));
+      pills[i]?.classList.add('active');
+      hint.style.opacity = i === 0 ? '1' : '0';
+    }
+  });
+}, { threshold: 0.45 });
+
+sections.forEach(s => sectionObserver.observe(s));
+
+
+const reveals = document.querySelectorAll('.reveal');
+const ro = new IntersectionObserver(entries => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      const siblings = Array.from(e.target.parentElement.querySelectorAll('.reveal'));
+      const idx = siblings.indexOf(e.target);
+      setTimeout(() => e.target.classList.add('in'), idx * 85);
+      ro.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.1 });
+reveals.forEach(r => ro.observe(r));
+</script>
+</body>
+</html>

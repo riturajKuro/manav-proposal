@@ -1,0 +1,12 @@
+{
+  "name": "manav-proposal",
+  "version": "1.0.0",
+  "description": "Marketing proposal for Manav by ClickMorph",
+  "main": "index.html",
+  "scripts": {
+    "start": "npx -y serve ."
+  },
+  "keywords": [],
+  "author": "ClickMorph",
+  "license": "ISC"
+}
