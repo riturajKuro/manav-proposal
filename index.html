@@ -288,6 +288,135 @@ body {
 /* ─── DECORATIVE GLOWS ─── */
 .glow-blob { position: absolute; border-radius: 50%; pointer-events: none; z-index: 0; }
 .section > *:not(.glow-blob):not(.page-foot):not(.foot-r) { position: relative; z-index: 1; }
+
+/* ═══════════════════════════════════════════
+   RESPONSIVE — TABLET & MOBILE
+═══════════════════════════════════════════ */
+
+/* ── TABLET: 768px and below ── */
+@media (max-width: 768px) {
+  .section {
+    padding: 80px 24px 60px;
+    min-height: auto;
+    justify-content: flex-start;
+    padding-top: 100px;
+  }
+
+  #nav { padding: 0 20px; }
+  .nav-pills { display: none; }
+
+  /* Cover */
+  .cover-grid {
+    grid-template-columns: 1fr !important;
+    gap: 36px;
+  }
+  .display-xl { font-size: clamp(32px, 8vw, 48px); }
+  .display-lg { font-size: clamp(24px, 6vw, 36px); }
+
+  /* Grids → single column */
+  .g3 { grid-template-columns: 1fr; gap: 16px; margin-top: 32px; }
+  .g4 { grid-template-columns: 1fr 1fr; gap: 14px; margin-top: 32px; }
+  .g2 { grid-template-columns: 1fr; gap: 16px; margin-top: 28px; }
+
+  /* Pricing */
+  .price-wrap {
+    grid-template-columns: 1fr !important;
+    gap: 24px;
+    margin-top: 36px;
+  }
+  .pc-badge { font-size: 8px; padding: 4px 14px; }
+  .pc-price { font-size: 30px; }
+
+  /* Contract */
+  .contract-split {
+    grid-template-columns: 1fr !important;
+    gap: 20px;
+    margin-top: 32px;
+  }
+
+  /* Timeline */
+  .tl-wrap { margin-top: 32px; }
+  .tl-spine { display: none; }
+  .tl-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+  }
+
+  /* Steps */
+  .steps-wrap {
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-top: 40px;
+    margin-bottom: 36px;
+  }
+  .steps-spine { display: none; }
+  .step-col { gap: 10px; }
+  .step-ring { width: 52px; height: 52px; font-size: 14px; }
+
+  /* Info card */
+  .ic-row { flex-wrap: wrap; gap: 8px; padding: 16px 20px; }
+  .ic-tag { margin-top: 4px; }
+
+  /* Insight strip */
+  .insight-strip { padding: 14px 18px; font-size: 13px; }
+
+  /* Pillar */
+  .pillar-head { padding: 20px 22px; }
+  .pillar-body-inner { padding: 20px 22px; }
+
+  /* Why card */
+  .why-card { padding: 20px 18px; }
+
+  /* CTA final */
+  .cta-final { padding: 18px 28px; font-size: 13px; }
+
+  /* Booking table */
+  .bk-row { padding: 16px 18px; flex-wrap: wrap; gap: 4px; }
+  .bk-amount { font-size: 16px; }
+  .bk-total { flex-wrap: wrap; gap: 8px; padding: 16px 18px; }
+  .bk-total-amount { font-size: 20px; }
+
+  /* Stats */
+  .stat-num { font-size: 34px; }
+
+  /* P2 strip */
+  .p2-strip { flex-direction: column; gap: 10px; padding: 16px 18px; }
+}
+
+/* ── MOBILE: 480px and below ── */
+@media (max-width: 480px) {
+  .section { padding: 90px 18px 52px; }
+
+  .display-xl { font-size: 30px; }
+  .display-lg { font-size: 22px; }
+  .lead { font-size: 14px; }
+
+  /* g4 → single col on smallest screens */
+  .g4 { grid-template-columns: 1fr; }
+
+  /* Timeline → single col */
+  .tl-grid { grid-template-columns: 1fr; }
+  .tl-card { text-align: left; }
+
+  /* Steps → single col */
+  .steps-wrap { grid-template-columns: 1fr; }
+  .step-col { flex-direction: row; align-items: flex-start; gap: 14px; text-align: left; }
+  .step-ring { flex-shrink: 0; width: 46px; height: 46px; font-size: 13px; }
+
+  /* Pricing */
+  .pc-price { font-size: 26px; }
+
+  /* Cover meta */
+  .cover-meta { flex-direction: column; gap: 10px; align-items: flex-start; }
+
+  /* Insight */
+  .insight-strip { flex-direction: column; gap: 8px; }
+
+  /* Booking */
+  .bk-lbl { font-size: 12px; }
+  .bk-amount { font-size: 15px; }
+}
+
 </style>
 </head>
 <body>
